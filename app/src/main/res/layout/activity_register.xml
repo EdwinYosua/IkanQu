@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="30dp"
+    tools:context=".ui.register.RegisterActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.capstoneapp.ikanqu.ui.component.FieldName
+            android:id="@+id/field_name"
+            style="@style/EditFieldStyle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.capstoneapp.ikanqu.ui.component.FieldEmail
+            android:id="@+id/field_email"
+            style="@style/EditFieldStyle"
+            app:layout_constraintEnd_toEndOf="@id/field_name"
+            app:layout_constraintStart_toStartOf="@id/field_name"
+            app:layout_constraintTop_toBottomOf="@id/field_name" />
+
+        <com.capstoneapp.ikanqu.ui.component.FieldPassword
+            android:id="@+id/field_password"
+            style="@style/EditFieldStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/field_email" />
+
+        <com.capstoneapp.ikanqu.ui.component.FieldPassword
+            android:id="@+id/field_confirmpassword"
+            style="@style/EditFieldStyle"
+            app:layout_constraintEnd_toEndOf="@id/field_password"
+            app:layout_constraintStart_toStartOf="@id/field_password"
+            app:layout_constraintTop_toBottomOf="@id/field_password" />
+
+        <Button
+            android:id="@+id/btn_signup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_sign_up"
+            app:layout_constraintEnd_toEndOf="@id/field_confirmpassword"
+            app:layout_constraintStart_toStartOf="@id/field_confirmpassword"
+            app:layout_constraintTop_toBottomOf="@id/field_confirmpassword" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

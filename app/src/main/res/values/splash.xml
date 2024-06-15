@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="Theme.IkanQu.MySplash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">#03A9F4</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/baseline_catching_pokemon_24</item>

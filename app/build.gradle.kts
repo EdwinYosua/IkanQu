@@ -15,6 +15,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "BASE_URL", "\"https://capstone-ikanqu.et.r.appspot.com/\"")
+
     }
 
     buildTypes {
@@ -43,6 +45,17 @@ dependencies {
 
     //splashscreen
     implementation(libs.androidx.core.splashscreen)
+    //Gson
+    implementation(libs.gson)
+    //retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson) //gson converter
+    //OkHttp
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+    //Coroutines
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.core)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

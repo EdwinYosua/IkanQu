@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">IkanQu</string>
+    <string name="txt_login">LOGIN</string>
+    <string name="txt_register">REGISTER</string>
+    <string name="txt_error_email">Format Email Salah</string>
+    <string name="txt_error_password">Password Kurang Dari 8 Digit</string>
+    <string name="txt_sign_up">Sign Up</string>
 </resources>
