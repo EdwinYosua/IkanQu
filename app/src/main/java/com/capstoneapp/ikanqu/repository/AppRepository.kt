@@ -1,4 +1,4 @@
-package com.capstoneapp.ikanqu
+package com.capstoneapp.ikanqu.repository
 
 import com.capstoneapp.ikanqu.network.ApiResult
 import com.capstoneapp.ikanqu.network.ApiServices
@@ -13,17 +13,17 @@ class AppRepository private constructor(
     fun register(
         name: String,
         email: String,
-        pass: String,
-        confrimPass: String
+        pass: String
     ): Flow<ApiResult<RegisterResponse>> = flow {
         try {
             val response = apiServices.register(
                 name,
                 email,
                 pass,
-                confrimPass
             )
-            emit(ApiResult.ApiSuccess(response))
+            if (response.error != true) {
+                emit(ApiResult.ApiSuccess(response))
+            }
         } catch (e: Exception) {
             e.printStackTrace()
             emit(ApiResult.ApiError(e.message.toString()))

@@ -12,6 +12,5 @@ interface ApiServices {
         @Field("name") name: String,
         @Field("email") email: String,
         @Field("password") password: String,
-        @Field("confirmpassword") confirmpassword: String
     ): RegisterResponse
 }

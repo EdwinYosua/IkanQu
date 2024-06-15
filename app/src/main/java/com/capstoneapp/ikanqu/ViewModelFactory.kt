@@ -3,6 +3,9 @@ package com.capstoneapp.ikanqu
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.capstoneapp.ikanqu.injection.Injection
+import com.capstoneapp.ikanqu.repository.AppRepository
+import com.capstoneapp.ikanqu.ui.main.MainViewModel
 import com.capstoneapp.ikanqu.ui.register.RegisterViewModel
 
 class ViewModelFactory private constructor(
@@ -11,6 +14,9 @@ class ViewModelFactory private constructor(
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
+            return MainViewModel(appRepo) as T
+        }
         if (modelClass.isAssignableFrom(RegisterViewModel::class.java)) {
             return RegisterViewModel(appRepo) as T
         }
