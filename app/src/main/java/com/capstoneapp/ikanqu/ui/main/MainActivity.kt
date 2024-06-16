@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.capstoneapp.ikanqu.R
 import com.capstoneapp.ikanqu.ViewModelFactory
 import com.capstoneapp.ikanqu.databinding.ActivityMainBinding
+import com.capstoneapp.ikanqu.ui.login.LoginActivity
 import com.capstoneapp.ikanqu.ui.register.RegisterActivity
 
 class MainActivity : AppCompatActivity() {
@@ -34,8 +35,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.apply {
-            btnRegister.setOnClickListener {
-                startActivity(Intent(this@MainActivity, RegisterActivity::class.java))
+//            btnRegister.setOnClickListener {
+//                startActivity(Intent(this@MainActivity, RegisterActivity ::class.java))
+//            }
+            btnLogin.setOnClickListener {
+                startActivity(Intent(this@MainActivity, LoginActivity::class.java))
             }
         }
     }
