@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.capstoneapp.ikanqu.ViewModelFactory
 import com.capstoneapp.ikanqu.databinding.ActivityRegisterBinding
 import com.capstoneapp.ikanqu.network.ApiResult
+import com.capstoneapp.ikanqu.ui.login.LoginActivity
 import com.capstoneapp.ikanqu.ui.main.MainActivity
 
 class RegisterActivity : AppCompatActivity() {
@@ -23,6 +24,9 @@ class RegisterActivity : AppCompatActivity() {
 
 
         binding.apply {
+            tvLoginLink.setOnClickListener {
+                startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+            }
             btnSignup.setOnClickListener {
                 val name = fieldName.text?.trim().toString()
                 val email = fieldEmail.text?.trim().toString()
