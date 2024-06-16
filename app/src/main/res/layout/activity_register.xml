@@ -28,7 +28,7 @@
             app:layout_constraintTop_toBottomOf="@id/field_name" />
 
         <com.capstoneapp.ikanqu.ui.component.FieldPassword
-            android:id="@+id/field_password"
+            android:id="@+id/field_login_password"
             style="@style/EditFieldStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,9 +37,9 @@
         <com.capstoneapp.ikanqu.ui.component.FieldPassword
             android:id="@+id/field_confirm_password"
             style="@style/EditFieldStyle"
-            app:layout_constraintEnd_toEndOf="@id/field_password"
-            app:layout_constraintStart_toStartOf="@id/field_password"
-            app:layout_constraintTop_toBottomOf="@id/field_password" />
+            app:layout_constraintEnd_toEndOf="@id/field_login_password"
+            app:layout_constraintStart_toStartOf="@id/field_login_password"
+            app:layout_constraintTop_toBottomOf="@id/field_login_password" />
 
         <Button
             android:id="@+id/btn_signup"
