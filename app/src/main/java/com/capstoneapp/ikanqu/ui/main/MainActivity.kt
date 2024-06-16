@@ -35,9 +35,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.apply {
-//            btnRegister.setOnClickListener {
-//                startActivity(Intent(this@MainActivity, RegisterActivity ::class.java))
-//            }
+            btnRegister.setOnClickListener {
+                startActivity(Intent(this@MainActivity, RegisterActivity::class.java))
+            }
             btnLogin.setOnClickListener {
                 startActivity(Intent(this@MainActivity, LoginActivity::class.java))
             }
