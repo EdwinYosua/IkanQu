@@ -1,5 +1,6 @@
 package com.capstoneapp.ikanqu.network
 
+import com.capstoneapp.ikanqu.network.response.LoginResponse
 import com.capstoneapp.ikanqu.network.response.RegisterResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -13,4 +14,11 @@ interface ApiServices {
         @Field("email") email: String,
         @Field("password") password: String,
     ): RegisterResponse
+
+    @FormUrlEncoded
+    @POST("login")
+    suspend fun login(
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): LoginResponse
 }
