@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.capstoneapp.ikanqu.repository.AppRepository
 import com.capstoneapp.ikanqu.network.ApiResult
 import com.capstoneapp.ikanqu.network.response.RegisterResponse
+import com.capstoneapp.ikanqu.repository.AppRepository
 import kotlinx.coroutines.launch
 
 class RegisterViewModel(private val appRepo: AppRepository) : ViewModel() {
