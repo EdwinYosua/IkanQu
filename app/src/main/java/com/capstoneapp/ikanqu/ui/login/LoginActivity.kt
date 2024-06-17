@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.capstoneapp.ikanqu.ViewModelFactory
 import com.capstoneapp.ikanqu.databinding.ActivityLoginBinding
 import com.capstoneapp.ikanqu.network.ApiResult
+import com.capstoneapp.ikanqu.ui.home.HomeActivity
 import com.capstoneapp.ikanqu.ui.main.MainActivity
 import com.capstoneapp.ikanqu.ui.register.RegisterActivity
 
@@ -47,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
                             is ApiResult.ApiSuccess -> {
                                 showToast("LOGIN BERHASIL")
                                 val intentLogin =
-                                    Intent(this@LoginActivity, MainActivity::class.java)
+                                    Intent(this@LoginActivity, HomeActivity::class.java)
                                 startActivity(
                                     intentLogin.addFlags(
                                         Intent.FLAG_ACTIVITY_CLEAR_TOP or
@@ -66,11 +67,9 @@ class LoginActivity : AppCompatActivity() {
                                 showToast("LOADING")
                             }
                         }
-
                     }
                 }
             }
-
         }
     }
 
