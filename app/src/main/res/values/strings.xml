@@ -5,4 +5,9 @@
     <string name="txt_error_email">Format Email Salah</string>
     <string name="txt_error_password">Password Kurang Dari 8 Digit</string>
     <string name="txt_sign_up">Sign Up</string>
+    <string name="gallery">Gallery</string>
+    <string name="analyze">Analyze</string>
+    <string name="result">Hasil Analisis</string>
+    <string name="desc">   Analyze result is here. Fish disease diagnosis is primarily based on the color and characteristics in the image to target the infected area.we identify the infected fishes caused by the various pathogen.</string>
+
 </resources>
