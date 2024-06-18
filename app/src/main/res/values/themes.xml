@@ -3,6 +3,7 @@
     <style name="Base.Theme.IkanQu" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">#B3E5FC</item>
     </style>
 
     <style name="EditFieldStyle">
@@ -13,6 +14,8 @@
         <item name="android:layout_marginTop">16dp</item>
         <item name="android:paddingHorizontal">16dp</item>
     </style>
+    
+
 
     <style name="Theme.IkanQu" parent="Base.Theme.IkanQu" />
 </resources>

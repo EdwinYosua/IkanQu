@@ -2,10 +2,15 @@ package com.capstoneapp.ikanqu.ui.register
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.capstoneapp.ikanqu.ViewModelFactory
 import com.capstoneapp.ikanqu.databinding.ActivityRegisterBinding
 import com.capstoneapp.ikanqu.network.ApiResult
@@ -19,7 +24,7 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
-        enableEdgeToEdge()
+//        enableEdgeToEdge()
         setContentView(binding.root)
 
 
@@ -79,6 +84,29 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
     }
+
+//    private fun hideKeyboard() {
+//        val imm =
+//            ContextCompat.getSystemService(this@RegisterActivity, InputMethodManager::class.java)
+//        val view = currentFocus ?: (this@RegisterActivity)
+//        imm?.hideSoftInputFromWindow(view.windowToken, 0)
+//    }
+//
+//    private fun setupUI(view: View) {
+//        if (view !is EditText) {
+//            view.setOnTouchListener { _, _ ->
+//                hideKeyboard()
+//                false
+//            }
+//        }
+//        if (view is ViewGroup) {
+//            for (i in 0 until view.childCount) {
+//                val innerView = view.getChildAt(i)
+//                setupUI(innerView)
+//            }
+//        }
+//    }
+
 
     private fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
