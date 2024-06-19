@@ -10,7 +10,6 @@ import com.capstoneapp.ikanqu.ViewModelFactory
 import com.capstoneapp.ikanqu.databinding.ActivityLoginBinding
 import com.capstoneapp.ikanqu.network.ApiResult
 import com.capstoneapp.ikanqu.ui.home.HomeActivity
-import com.capstoneapp.ikanqu.ui.main.MainActivity
 import com.capstoneapp.ikanqu.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {

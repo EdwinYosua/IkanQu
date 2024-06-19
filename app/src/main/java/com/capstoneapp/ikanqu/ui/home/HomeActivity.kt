@@ -4,14 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.capstoneapp.ikanqu.R
-import com.capstoneapp.ikanqu.databinding.ActivityDetailBinding
 import com.capstoneapp.ikanqu.databinding.ActivityHomeBinding
-import com.capstoneapp.ikanqu.databinding.ActivityLoginBinding
 import com.capstoneapp.ikanqu.ui.detail.DetailActivity
-import com.capstoneapp.ikanqu.ui.login.LoginActivity
 import com.capstoneapp.ikanqu.ui.main.MainActivity
 
 class HomeActivity : AppCompatActivity() {
@@ -22,13 +16,17 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.apply{
-            analyzeButton.setOnClickListener{
+        binding.apply {
+            analyzeButton.setOnClickListener {
                 startActivity(Intent(this@HomeActivity, DetailActivity::class.java))
             }
-            logoutButton.setOnClickListener{
+            logoutButton.setOnClickListener {
                 startActivity(Intent(this@HomeActivity, MainActivity::class.java))
             }
         }
+    }
+
+    companion object {
+        private const val EXTRA_NAME = "extra_name"
     }
 }
