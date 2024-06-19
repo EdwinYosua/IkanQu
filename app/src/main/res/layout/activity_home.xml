@@ -22,8 +22,10 @@
         android:background="@drawable/rounded_close"
         android:padding="8dp"
         android:layout_margin="16dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/imageLabelTextView"
+        app:layout_constraintBottom_toBottomOf="@id/imageLabelTextView"
         app:layout_constraintEnd_toEndOf="parent" />
+
     <View
         android:id="@+id/blueBackground"
         android:layout_width="0dp"
@@ -49,7 +51,7 @@
         android:id="@+id/imageLabelTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hallo jhon"
+        android:text="@string/hallo_text"
         android:textStyle="bold"
         android:shadowColor="#808080"
         android:shadowDx="2"
@@ -57,9 +59,10 @@
         android:shadowRadius="1"
         android:textColor="#4FA6E9"
         android:textSize="24sp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/previewImageView"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView

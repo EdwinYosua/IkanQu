@@ -10,7 +10,6 @@ import com.capstoneapp.ikanqu.ViewModelFactory
 import com.capstoneapp.ikanqu.databinding.ActivityLoginBinding
 import com.capstoneapp.ikanqu.network.ApiResult
 import com.capstoneapp.ikanqu.ui.home.HomeActivity
-import com.capstoneapp.ikanqu.ui.main.MainActivity
 import com.capstoneapp.ikanqu.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -43,20 +42,25 @@ class LoginActivity : AppCompatActivity() {
 
                 if (email.isNotEmpty() && pass.isNotEmpty()) {
                     loginViewModel.loginUser(email, pass)
+                    val intentLogin = Intent(this@LoginActivity, HomeActivity::class.java)
+
+
+
                     loginViewModel.loginResult.observe(this@LoginActivity) { result ->
                         when (result) {
                             is ApiResult.ApiSuccess -> {
                                 showToast("LOGIN BERHASIL")
-                                val intentLogin =
-                                    Intent(this@LoginActivity, HomeActivity::class.java)
-                                startActivity(
-                                    intentLogin.addFlags(
-                                        Intent.FLAG_ACTIVITY_CLEAR_TOP or
-                                                Intent.FLAG_ACTIVITY_CLEAR_TASK or
-                                                Intent.FLAG_ACTIVITY_NEW_TASK
+                                loginViewModel.loginName.observe(this@LoginActivity) { loginName ->
+                                    intentLogin.putExtra(HomeActivity.EXTRA_NAME, loginName)
+                                    startActivity(
+                                        intentLogin.addFlags(
+                                            Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                                                    Intent.FLAG_ACTIVITY_CLEAR_TASK or
+                                                    Intent.FLAG_ACTIVITY_NEW_TASK
+                                        )
                                     )
-                                )
-                                finish()
+                                    finish()
+                                }
                             }
 
                             is ApiResult.ApiError -> {

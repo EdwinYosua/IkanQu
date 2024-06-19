@@ -2,7 +2,7 @@ package com.capstoneapp.ikanqu.repository
 
 import com.capstoneapp.ikanqu.network.ApiResult
 import com.capstoneapp.ikanqu.network.ApiServices
-import com.capstoneapp.ikanqu.network.response.LoginResponse
+import com.capstoneapp.ikanqu.network.response.LoginSuccess
 import com.capstoneapp.ikanqu.network.response.RegisterResponse
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -32,12 +32,13 @@ class AppRepository private constructor(
         }
     }
 
-    fun login(email: String, pass: String): Flow<ApiResult<LoginResponse>> = flow {
+    fun login(email: String, pass: String): Flow<ApiResult<LoginSuccess>> = flow {
         try {
             emit(ApiResult.ApiLoading)
             val response = apiServices.login(email, pass)
             if (response.error != true) {
-                emit(ApiResult.ApiSuccess(response))
+                val loginSuccess = LoginSuccess(response.name, response)
+                emit(ApiResult.ApiSuccess(loginSuccess))
             }
         } catch (e: Exception) {
             e.printStackTrace()
