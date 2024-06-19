@@ -56,6 +56,8 @@ class AppRepository private constructor(
     fun getUserId() = pref.getUserId()
     fun getUserName() = pref.getUserName()
 
+    suspend fun clearLoginData() = pref.clearUserLoginData()
+
 
     companion object {
         @Volatile
