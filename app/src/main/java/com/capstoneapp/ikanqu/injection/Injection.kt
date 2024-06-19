@@ -1,12 +1,15 @@
 package com.capstoneapp.ikanqu.injection
 
 import android.content.Context
+import com.capstoneapp.ikanqu.local.SettingPreference
+import com.capstoneapp.ikanqu.local.dataStore
 import com.capstoneapp.ikanqu.network.ApiConfig
 import com.capstoneapp.ikanqu.repository.AppRepository
 
 object Injection {
     fun provideRepo(context: Context): AppRepository {
-        val apiServices = ApiConfig.getApiServices()
-        return AppRepository.getInstance(apiServices)
+        val pref = SettingPreference.getInstance(context.dataStore)
+        val apiServices = ApiConfig.getApiServices(pref)
+        return AppRepository.getInstance(apiServices, pref)
     }
 }

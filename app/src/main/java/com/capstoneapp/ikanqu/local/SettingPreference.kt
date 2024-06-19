@@ -16,6 +16,8 @@ class SettingPreference private constructor(
 ) {
 
     private val userId = stringPreferencesKey("userId")
+    private val userName = stringPreferencesKey("userName")
+
 
     fun getUserId(): Flow<String?> {
         return dataStore.data.map { pref ->
@@ -23,15 +25,23 @@ class SettingPreference private constructor(
         }
     }
 
-    suspend fun saveUserId(userId: String) {
-        dataStore.edit { pref ->
-            pref[this.userId] = userId
+    fun getUserName(): Flow<String?> {
+        return dataStore.data.map { pref ->
+            pref[userName]
         }
     }
 
-    suspend fun clearUserLogin() {
+    suspend fun saveUserLoginData(userId: String, userName: String) {
+        dataStore.edit { pref ->
+            pref[this.userId] = userId
+            pref[this.userName] = userName
+        }
+    }
+
+    suspend fun clearUserLoginData() {
         dataStore.edit { pref ->
             pref.remove(userId)
+            pref.remove(userName)
         }
     }
 
