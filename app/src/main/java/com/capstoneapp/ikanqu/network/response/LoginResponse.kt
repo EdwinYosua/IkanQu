@@ -19,3 +19,8 @@ data class LoginResponse(
 //	@field:SerializedName("token")
 //	val token: String? = null
 )
+
+data class LoginSuccess(
+    val name: String?,
+    val loginResponse: LoginResponse
+)

@@ -50,7 +50,7 @@
         android:id="@+id/imageLabelTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hallo jhon"
+        android:text="@string/hallo_text"
         android:textStyle="bold"
         android:shadowColor="#808080"
         android:shadowDx="2"
