@@ -22,5 +22,6 @@ data class LoginResponse(
 
 data class LoginSuccess(
     val name: String?,
+    val userId: String?,
     val loginResponse: LoginResponse
 )

@@ -1,5 +1,6 @@
 package com.capstoneapp.ikanqu.repository
 
+import com.capstoneapp.ikanqu.local.SettingPreference
 import com.capstoneapp.ikanqu.network.ApiResult
 import com.capstoneapp.ikanqu.network.ApiServices
 import com.capstoneapp.ikanqu.network.response.LoginSuccess
@@ -8,7 +9,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class AppRepository private constructor(
-    private val apiServices: ApiServices
+    private val apiServices: ApiServices,
+    private val pref: SettingPreference
 ) {
 
     fun register(
@@ -37,7 +39,12 @@ class AppRepository private constructor(
             emit(ApiResult.ApiLoading)
             val response = apiServices.login(email, pass)
             if (response.error != true) {
-                val loginSuccess = LoginSuccess(response.name, response)
+                val loginSuccess = LoginSuccess(response.name, response.userId, response)
+                response.userId?.let {
+                    response.name?.let { it1 ->
+                        pref.saveUserLoginData(it, it1)
+                    }
+                }
                 emit(ApiResult.ApiSuccess(loginSuccess))
             }
         } catch (e: Exception) {
@@ -46,18 +53,23 @@ class AppRepository private constructor(
         }
     }
 
+    fun getUserId() = pref.getUserId()
+    fun getUserName() = pref.getUserName()
+
+    suspend fun clearLoginData() = pref.clearUserLoginData()
+
 
     companion object {
         @Volatile
         private var instance: AppRepository? = null
         fun getInstance(
             apiServices: ApiServices,
-//            pref: SettingPreferences
+            pref: SettingPreference
         ): AppRepository =
             instance ?: synchronized(this) {
                 instance ?: AppRepository(
                     apiServices,
-//                    pref
+                    pref
                 ).also { instance = it }
             }
     }

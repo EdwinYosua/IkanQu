@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.capstoneapp.ikanqu.R
 import com.capstoneapp.ikanqu.ViewModelFactory
 import com.capstoneapp.ikanqu.databinding.ActivityMainBinding
+import com.capstoneapp.ikanqu.ui.home.HomeActivity
 import com.capstoneapp.ikanqu.ui.login.LoginActivity
 import com.capstoneapp.ikanqu.ui.register.RegisterActivity
 
@@ -34,6 +35,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.apply {
+
+            mainViewModel.getLoggedUserId().observe(this@MainActivity) { userId ->
+                if (userId != null) {
+                    mainViewModel.getLoggedUserName().observe(this@MainActivity) { userName ->
+                        val homeIntent = Intent(this@MainActivity, HomeActivity::class.java)
+                        homeIntent.putExtra(HomeActivity.EXTRA_NAME, userName)
+                        startActivity(homeIntent)
+                        finish()
+                    }
+                }
+            }
+
             btnRegister.setOnClickListener {
                 startActivity(Intent(this@MainActivity, RegisterActivity::class.java))
             }
