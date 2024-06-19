@@ -24,8 +24,7 @@
         android:layout_margin="16dp"
         app:layout_constraintTop_toTopOf="@id/imageLabelTextView"
         app:layout_constraintBottom_toBottomOf="@id/imageLabelTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <View
         android:id="@+id/blueBackground"

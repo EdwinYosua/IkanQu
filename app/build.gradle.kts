@@ -58,6 +58,8 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     //ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    //DataStore
+    implementation(libs.androidx.datastore.preferences)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
