@@ -1,13 +1,13 @@
 package com.capstoneapp.ikanqu.network
 
-import com.capstoneapp.ikanqu.network.response.ModelResponse
-import retrofit2.http.Field
+import ModelResponse
+import okhttp3.MultipartBody
 import retrofit2.http.POST
-import java.io.File
+import retrofit2.http.Part
 
 interface ModelApiServices {
-    @POST("register")
+    @POST("predict")
     suspend fun predict(
-        @Field("file") file: File
+        @Part file: MultipartBody.Part
     ): ModelResponse
 }

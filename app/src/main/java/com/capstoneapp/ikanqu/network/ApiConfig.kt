@@ -12,7 +12,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiConfig {
     companion object {
-        fun getApiServices(pref: SettingPreference): ApiServices {
+
+        private fun createClient(pref: SettingPreference): OkHttpClient {
             val loggingInterceptor = if (BuildConfig.DEBUG) {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             } else {
@@ -26,16 +27,57 @@ class ApiConfig {
                     .build()
                 chain.proceed(reqHeaders)
             }
-            val client = OkHttpClient.Builder()
+            return OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
                 .addInterceptor(authInterceptor)
                 .build()
-            val retrofit = Retrofit.Builder()
-                .baseUrl(BuildConfig.BASE_URL)
+        }
+
+        private fun createRetrofit(baseUrl: String, client: OkHttpClient): Retrofit {
+            return Retrofit.Builder()
+                .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
+        }
+
+        fun getApiServices(pref: SettingPreference): ApiServices {
+            val client = createClient(pref)
+            val retrofit = createRetrofit(BuildConfig.BASE_URL, client)
             return retrofit.create(ApiServices::class.java)
         }
+
+        fun getModelApiServices(pref: SettingPreference): ModelApiServices {
+            val client = createClient(pref)
+            val retrofit = createRetrofit(BuildConfig.MODEL_URL, client)
+            return retrofit.create(ModelApiServices::class.java)
+        }
+
+
+//        fun getApiServices(pref: SettingPreference): ApiServices {
+//            val loggingInterceptor = if (BuildConfig.DEBUG) {
+//                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+//            } else {
+//                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
+//            }
+//            val authInterceptor = Interceptor { chain ->
+//                val req = chain.request()
+//                val userId = runBlocking { pref.getUserId().first() }
+//                val reqHeaders = req.newBuilder()
+//                    .addHeader("Authorization", "Bearer $userId")
+//                    .build()
+//                chain.proceed(reqHeaders)
+//            }
+//            val client = OkHttpClient.Builder()
+//                .addInterceptor(loggingInterceptor)
+//                .addInterceptor(authInterceptor)
+//                .build()
+//            val retrofit = Retrofit.Builder()
+//                .baseUrl(BuildConfig.BASE_URL)
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .client(client)
+//                .build()
+//            return retrofit.create(ApiServices::class.java)
+//        }
     }
 }
