@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="30dp"
     tools:context=".ui.home.HomeActivity">
 
     <androidx.constraintlayout.widget.Guideline
@@ -18,35 +19,38 @@
         android:id="@+id/logoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/baseline_exit_to_app_24"
-        android:contentDescription="Close"
-        android:background="@drawable/rounded_close"
-        android:padding="8dp"
         android:layout_margin="16dp"
+        android:background="@drawable/rounded_close"
+        android:contentDescription="Close"
+        android:padding="8dp"
+        android:src="@drawable/baseline_exit_to_app_24"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+
+        />
 
     <ImageButton
         android:id="@+id/historyButton"
-        android:src="@drawable/baseline_article_24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:background="@drawable/rounded_close"
         android:contentDescription="Back"
         android:padding="8dp"
-        android:layout_margin="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/logoutButton" />
+        android:src="@drawable/baseline_article_24"
+        app:layout_constraintBottom_toBottomOf="@id/logoutButton"
+        app:layout_constraintEnd_toStartOf="@id/logoutButton"
+        app:layout_constraintTop_toTopOf="@id/logoutButton" />
 
     <View
         android:id="@+id/blueBackground"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/rounded_background_home"
-        app:layout_constraintTop_toBottomOf="@id/guideline"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/guideline" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progressIndicator"
@@ -62,18 +66,20 @@
         android:id="@+id/imageLabelTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hallo jhon"
-        android:textStyle="bold"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="26dp"
         android:shadowColor="#808080"
         android:shadowDx="2"
         android:shadowDy="2"
         android:shadowRadius="1"
+        android:text="Hallo jhon"
         android:textColor="#4FA6E9"
         android:textSize="24sp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/previewImageView"
+        app:layout_constraintEnd_toEndOf="@id/previewImageView"
+        app:layout_constraintStart_toStartOf="@id/previewImageView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/previewImageView"
@@ -81,10 +87,8 @@
         android:layout_height="0dp"
         android:layout_margin="16dp"
         android:background="@drawable/rounded_image"
-        android:padding="16dp"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toBottomOf="@id/imageLabelTextView"
         app:layout_constraintBottom_toTopOf="@+id/galleryButton"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_placeholder" />
@@ -96,6 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="10sp"
         android:backgroundTint="#4FA6E9"
         android:padding="20dp"
         android:shadowColor="#808080"
@@ -103,7 +108,6 @@
         android:shadowDy="2"
         android:shadowRadius="1"
         android:text="Camera"
-        android:layout_marginBottom="10sp"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/analyzeButton"
@@ -111,21 +115,21 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:layout_marginBottom="10sp"
         android:id="@+id/galleryButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="20dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="20dp"
-        android:text="@string/gallery"
+        android:layout_marginBottom="10sp"
         android:backgroundTint="#4FA6E9"
-        android:textStyle="bold"
+        android:padding="20dp"
         android:shadowColor="#808080"
         android:shadowDx="2"
         android:shadowDy="2"
         android:shadowRadius="1"
+        android:text="@string/gallery"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/analyzeButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/cameraButton" />
@@ -133,19 +137,19 @@
     <Button
         android:id="@+id/analyzeButton"
         android:layout_width="0dp"
-        android:padding="20dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="72dp"
         android:backgroundTint="#4FA6E9"
-        android:text="@string/analyze"
-        android:textStyle="bold"
+        android:padding="20dp"
         android:shadowColor="#808080"
         android:shadowDx="2"
         android:shadowDy="2"
         android:shadowRadius="1"
+        android:text="@string/analyze"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
