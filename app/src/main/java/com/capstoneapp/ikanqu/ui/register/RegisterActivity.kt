@@ -18,7 +18,6 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
-//        enableEdgeToEdge()
         setContentView(binding.root)
 
 
@@ -71,7 +70,7 @@ class RegisterActivity : AppCompatActivity() {
                             }
 
                             is ApiResult.ApiError -> showToast(result.error)
-                            ApiResult.ApiLoading -> showToast("LOADING BRAY")
+                            ApiResult.ApiLoading -> showToast("LOADING")
                         }
                     }
                 }

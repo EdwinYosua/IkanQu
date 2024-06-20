@@ -16,6 +16,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "BASE_URL", "\"https://capstone-ikanqu.et.r.appspot.com/\"")
+        buildConfigField("String", "MODEL_URL", "\"https://ikanqu-pdngzjildq-et.a.run.app/\"")
 
     }
 
