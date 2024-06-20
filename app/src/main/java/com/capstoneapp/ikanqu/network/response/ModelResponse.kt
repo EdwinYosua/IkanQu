@@ -2,7 +2,12 @@ import com.google.gson.annotations.SerializedName
 
 // Data classes
 data class ModelResponse(
-    val error: String,
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String,
+
     val prediction: Prediction
 )
 

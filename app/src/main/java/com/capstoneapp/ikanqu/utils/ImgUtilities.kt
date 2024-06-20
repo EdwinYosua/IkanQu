@@ -64,8 +64,6 @@ fun Bitmap.getRotatedBitmap(file: File): Bitmap {
 }
 
 
-
-
 fun rotateImg(bitMapFile: Bitmap, angle: Float): Bitmap {
     val matrix = Matrix()
     matrix.postRotate(angle)

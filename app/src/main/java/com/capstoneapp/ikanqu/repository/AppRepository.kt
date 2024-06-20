@@ -31,9 +31,11 @@ class AppRepository private constructor(
             val multipartBody = MultipartBody.Part.createFormData("file", img.name, reqImgFile)
             val response = modelApiServices.predict(multipartBody)
 
-            //add error later
-            emit(ApiResult.ApiSuccess(response))
-
+            if (response.error) {
+                emit(ApiResult.ApiError(response.message))
+            } else {
+                emit(ApiResult.ApiSuccess(response))
+            }
         } catch (e: Exception) {
             e.printStackTrace()
             emit(ApiResult.ApiError(e.message.toString()))
