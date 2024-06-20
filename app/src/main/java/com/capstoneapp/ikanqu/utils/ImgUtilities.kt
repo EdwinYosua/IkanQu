@@ -64,6 +64,8 @@ fun Bitmap.getRotatedBitmap(file: File): Bitmap {
 }
 
 
+
+
 fun rotateImg(bitMapFile: Bitmap, angle: Float): Bitmap {
     val matrix = Matrix()
     matrix.postRotate(angle)
@@ -80,3 +82,4 @@ fun rotateImg(bitMapFile: Bitmap, angle: Float): Bitmap {
 
 fun createCustomTempFile(context: Context): File =
     File.createTempFile(timeStamp, ".jpg", context.externalCacheDir)
+
