@@ -16,7 +16,9 @@ import androidx.core.content.ContextCompat
 import com.capstoneapp.ikanqu.R
 import com.capstoneapp.ikanqu.ViewModelFactory
 import com.capstoneapp.ikanqu.databinding.ActivityHomeBinding
+import com.capstoneapp.ikanqu.network.ApiResult
 import com.capstoneapp.ikanqu.ui.main.MainActivity
+import com.capstoneapp.ikanqu.utils.uriToFile
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -63,14 +65,28 @@ class HomeActivity : AppCompatActivity() {
                 getString(R.string.hallo_text, userName.split(" ").firstOrNull() ?: userName)
 
             galleryButton.setOnClickListener { startGallery() }
-
             analyzeButton.setOnClickListener {
-//                startActivity(Intent(this@HomeActivity, DetailActivity::class.java))
+                if (currentImg == null) {
+                    showToast("No Media Selected")
+                } else {
+                    startUpload()
+                }
             }
+
             logoutButton.setOnClickListener {
                 homeViewModel.logout()
                 startActivity(Intent(this@HomeActivity, MainActivity::class.java))
                 finish()
+            }
+
+            homeViewModel.analyzeResponse.observe(this@HomeActivity) { response ->
+                when (response) {
+                    is ApiResult.ApiError -> showToast(response.error)
+                    ApiResult.ApiLoading -> showToast("LOADING")
+                    is ApiResult.ApiSuccess -> {
+                        showToast(response.data.prediction.toString())
+                    }
+                }
             }
         }
     }
@@ -87,8 +103,21 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    private fun startUpload() {
+        currentImg?.let { uri ->
+            val imgFile = uriToFile(uri, this@HomeActivity)
+            Log.d("Img", "SHow Img : ${imgFile.path}")
+            homeViewModel.analyzeImg(imgFile)
+        }
+    }
+
+
     private fun startGallery() {
         launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+    }
+
+    private fun showToast(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 
     companion object {
