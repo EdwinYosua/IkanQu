@@ -13,6 +13,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
+    <!-- Tombol Logout -->
     <ImageButton
         android:id="@+id/logoutButton"
         android:layout_width="wrap_content"
@@ -22,9 +23,20 @@
         android:background="@drawable/rounded_close"
         android:padding="8dp"
         android:layout_margin="16dp"
-        app:layout_constraintTop_toTopOf="@id/imageLabelTextView"
-        app:layout_constraintBottom_toBottomOf="@id/imageLabelTextView"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/historyButton"
+        android:src="@drawable/baseline_article_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_close"
+        android:contentDescription="Back"
+        android:padding="8dp"
+        android:layout_margin="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/logoutButton" />
 
     <View
         android:id="@+id/blueBackground"
@@ -46,12 +58,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <TextView
         android:id="@+id/imageLabelTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hallo_text"
+        android:text="Hallo jhon"
         android:textStyle="bold"
         android:shadowColor="#808080"
         android:shadowDx="2"
@@ -59,10 +70,9 @@
         android:shadowRadius="1"
         android:textColor="#4FA6E9"
         android:textSize="24sp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/previewImageView"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
@@ -79,43 +89,65 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_placeholder" />
 
+
     <Button
-        android:textStyle="bold"
+        android:id="@+id/cameraButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#4FA6E9"
+        android:padding="20dp"
         android:shadowColor="#808080"
         android:shadowDx="2"
         android:shadowDy="2"
         android:shadowRadius="1"
+        android:text="Camera"
+        android:layout_marginBottom="10sp"
         android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/analyzeButton"
+        app:layout_constraintEnd_toStartOf="@id/galleryButton"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <Button
+        android:layout_marginBottom="10sp"
         android:id="@+id/galleryButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="20dp"
         android:text="@string/gallery"
         android:backgroundTint="#4FA6E9"
-        app:layout_constraintBottom_toTopOf="@+id/analyzeButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/previewImageView" />
-
-    <Button
         android:textStyle="bold"
         android:shadowColor="#808080"
         android:shadowDx="2"
         android:shadowDy="2"
         android:shadowRadius="1"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/analyzeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cameraButton"
+        />
+
+    <Button
         android:id="@+id/analyzeButton"
         android:layout_width="0dp"
         android:padding="20dp"
-
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="72dp"
         android:backgroundTint="#4FA6E9"
         android:text="@string/analyze"
+        android:textStyle="bold"
+        android:shadowColor="#808080"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="1"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
