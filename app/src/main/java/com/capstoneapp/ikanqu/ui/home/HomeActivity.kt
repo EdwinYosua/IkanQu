@@ -85,12 +85,10 @@ class HomeActivity : AppCompatActivity() {
                     is ApiResult.ApiError -> showToast(response.error)
                     ApiResult.ApiLoading -> showToast("LOADING")
                     is ApiResult.ApiSuccess -> {
-//                        showToast(response.data.prediction.clazz)
                         val detailIntent = Intent(this@HomeActivity, DetailActivity::class.java)
-                        detailIntent.putExtra(
-                            DetailActivity.EXTRA_PREDICT,
-                            response.data.prediction.clazz
-                        )
+                        detailIntent
+                            .putExtra(DetailActivity.EXTRA_PREDICT, response.data.prediction.clazz)
+                            .putExtra(DetailActivity.EXTRA_IMG, currentImg.toString())
                         startActivity(detailIntent)
                     }
                 }
