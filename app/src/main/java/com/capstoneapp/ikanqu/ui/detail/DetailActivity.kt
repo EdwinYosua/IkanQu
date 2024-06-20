@@ -13,11 +13,28 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val prediction = intent.getStringExtra(EXTRA_PREDICT) ?: "404"
+
         binding.apply {
-            closeButton.setOnClickListener {
-                startActivity(Intent(this@DetailActivity, HomeActivity::class.java))
-            }
+
+            titleTextView.text = prediction
+
+//            closeButton.setOnClickListener {
+//                val homeIntent = Intent(this@DetailActivity, HomeActivity::class.java)
+//                startActivity(homeIntent
+//                    .addFlags(
+//                        Intent.FLAG_ACTIVITY_CLEAR_TOP or
+//                                Intent.FLAG_ACTIVITY_CLEAR_TASK or
+//                                Intent.FLAG_ACTIVITY_NEW_TASK
+//                    )
+//                )
+//                finish()
+//            }
         }
 
+    }
+
+    companion object {
+        const val EXTRA_PREDICT = "extra_predict"
     }
 }

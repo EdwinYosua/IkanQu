@@ -17,6 +17,7 @@ import com.capstoneapp.ikanqu.R
 import com.capstoneapp.ikanqu.ViewModelFactory
 import com.capstoneapp.ikanqu.databinding.ActivityHomeBinding
 import com.capstoneapp.ikanqu.network.ApiResult
+import com.capstoneapp.ikanqu.ui.detail.DetailActivity
 import com.capstoneapp.ikanqu.ui.main.MainActivity
 import com.capstoneapp.ikanqu.utils.uriToFile
 
@@ -84,7 +85,13 @@ class HomeActivity : AppCompatActivity() {
                     is ApiResult.ApiError -> showToast(response.error)
                     ApiResult.ApiLoading -> showToast("LOADING")
                     is ApiResult.ApiSuccess -> {
-                        showToast(response.data.prediction.toString())
+//                        showToast(response.data.prediction.clazz)
+                        val detailIntent = Intent(this@HomeActivity, DetailActivity::class.java)
+                        detailIntent.putExtra(
+                            DetailActivity.EXTRA_PREDICT,
+                            response.data.prediction.clazz
+                        )
+                        startActivity(detailIntent)
                     }
                 }
             }
@@ -110,7 +117,6 @@ class HomeActivity : AppCompatActivity() {
             homeViewModel.analyzeImg(imgFile)
         }
     }
-
 
     private fun startGallery() {
         launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))

@@ -18,10 +18,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/rounded_background_home"
-        app:layout_constraintTop_toBottomOf="@id/guideline"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/guideline" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progressIndicator"
@@ -37,28 +37,28 @@
         android:id="@+id/imageLabelTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Detail Analysis"
-        android:textStyle="bold"
+        android:layout_marginTop="40dp"
         android:shadowColor="#808080"
         android:shadowDx="2"
         android:shadowDy="2"
         android:shadowRadius="1"
+        android:text="Detail Analysis"
         android:textColor="#4FA6E9"
         android:textSize="24sp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Container untuk Title dan Description -->
     <LinearLayout
         android:id="@+id/titleDescriptionContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:background="@drawable/rounded_button"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_button"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,32 +69,32 @@
             android:id="@+id/titleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Analysis"
+            android:gravity="center"
+            android:padding="12dp"
             android:shadowColor="#808080"
             android:shadowDx="2"
             android:shadowDy="2"
             android:shadowRadius="1"
+            android:text="Analysis"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:padding="12dp"
-            android:gravity="center" />
+            android:textStyle="bold" />
 
         <!-- Deskripsi -->
         <TextView
             android:id="@+id/descriptionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/desc"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:padding="12dp"
             android:gravity="center"
-            android:textStyle="bold"
+            android:padding="12dp"
             android:shadowColor="#808080"
             android:shadowDx="2"
             android:shadowDy="2"
-            android:shadowRadius="1" />
+            android:shadowRadius="1"
+            android:text="@string/desc"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -106,24 +106,12 @@
         android:layout_margin="16dp"
         android:background="@drawable/rounded_image"
         android:padding="16dp"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toBottomOf="@id/imageLabelTextView"
         app:layout_constraintBottom_toTopOf="@+id/titleDescriptionContainer"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageLabelTextView"
         app:srcCompat="@drawable/ic_placeholder" />
 
-    <!-- Tombol Close -->
-    <ImageButton
-        android:id="@+id/closeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_close_24"
-        android:contentDescription="Close"
-        android:background="@drawable/rounded_close"
-        android:padding="8dp"
-        android:layout_margin="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
